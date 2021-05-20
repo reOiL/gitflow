@@ -1,0 +1,26 @@
+#!/bin/bash
+
+branchName=$(git branch --show-current)
+commitHash=$(git rev-parse --short HEAD)
+
+echo "Current branch is $branchName"
+
+if [[ "$branchName" !=  "master" ]]
+then
+    exit 0
+fi
+
+if [[ $(git branch --list $branchName) == $branchName ]]
+then
+    echo "GitFlow branch is already exist: $branchName"
+    git checkout $branchName
+    exit 0
+fi
+
+echo "Create a new branch [$commitHash] for feature"
+git checkout -b $commitHash
+# Remove out commit from master
+git checkout master
+git reset HEAD~ --hard
+# Back to our feature branch
+git checkout $commitHash
