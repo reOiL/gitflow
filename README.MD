@@ -12,5 +12,5 @@ manually for each feature. We will create it automatically before commit.
 ### Via Curl
 
 ```bash
-curl https://raw.githubusercontent.com/reOiL/gitflow/master/post-commit -o $(pwd)/.git/hooks/post-commit  && chmod +x  $(pwd)/.git/hooks/post-commit
+curl https://raw.githubusercontent.com/reOiL/gitflow/master/post-commit -o "$(pwd)/.git/hooks/post-commit"  && chmod +x  "$(pwd)/.git/hooks/post-commit"
 ```
